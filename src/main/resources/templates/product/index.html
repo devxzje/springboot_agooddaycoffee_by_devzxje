@@ -14,47 +14,9 @@
     <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            padding: 8px;
-            background-color: #dddddd;
-            text-decoration: none;
-        }
-    </style>
-
 </head>
 
-
-
 <body>
-
-<!--<nav class="menutop">-->
-<!--    <ul>-->
-<!--        <li><a th:href="@{/}">Trang chu</a></li>-->
-<!--        <li><a th:href="@{/ctsp/index}">San pham chi tiet</a></li>-->
-<!--        <li><a th:href="@{/khach-hang/index}">Khach hang</a></li>-->
-<!--        <li><a th:href="@{/nhan-vien/index}">Nhan vien</a></li>-->
-<!--        <li><a th:href="@{/chuc-vu/index}">Chuc vu </a></li>-->
-<!--        <li><a th:href="@{/san-pham/index}">San pham</a></li>-->
-<!--        <li><a th:href="@{/mau-sac/index}">Mau sac</a></li>-->
-<!--        <li><a th:href="@{/dong-sp/index}">Dong sp</a></li>-->
-<!--        <li><a th:href="@{/cua-hang/index}">Cua hang</a></li>-->
-<!--        <li><a th:href="@{/nsx/index}">NSX</a></li>-->
-<!--    </ul>-->
-<!--</nav>-->
 
 <div class="alert alert-success text-center" th:if="${message}">
     [[${message}]]
