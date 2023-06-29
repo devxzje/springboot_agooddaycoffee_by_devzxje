@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/cart")
@@ -64,12 +65,16 @@ public class CartController {
     @GetMapping("/view")
     public String view(Model model,
                        RedirectAttributes redirectAttributes) throws NotFoundException{
-        List<CartItem> cartItems = cartItemRepository.findAll();
-        model.addAttribute("cartItems", cartItems);
         Customer customer = customerService.findById(1);
         ShoppingCart cart= customer.getShoppingCart();
-        Double totalPrice = cart.getTotalPrice();
-        model.addAttribute("subTotal", totalPrice);
+        if(cart==null){
+            model.addAttribute("message", "Nothing in your cart, go back to buy some coffee");
+        }else{
+            Set<CartItem> cartItems = cart.getCartItem();
+            model.addAttribute("cartItems", cartItems);
+            Double totalPrice = cart.getTotalPrice();
+            model.addAttribute("subTotal", totalPrice);
+        }
         return "cart/index";
     }
 
