@@ -42,4 +42,10 @@ public class Customer {
     @Column(name = "customer_address")
     private String address;
 
+    @OneToOne(mappedBy = "customer")
+    private ShoppingCart shoppingCart;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders;
+
 }

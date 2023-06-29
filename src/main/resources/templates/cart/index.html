@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+<div class="alert alert-success text-center" th:if="${message}">
+    [[${message}]]
+</div>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Update</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="cartItem:${cartItems}">
+            <td th:text="${cartItem.product.name}"></td>
+            <td th:text="${cartItem.product.price}"></td>
+            <form th:action="@{/cart/update}" method="post">
+                <input type="hidden" name="id" th:value="${cartItem.product.id}">
+
+            <td>
+                <input type="number" name="quantity" th:value="${cartItem.quantity}">
+            </td>
+                <td th:text="${cartItem.totalPrice}">
+                </td>
+
+            <td>
+                <button type="submit">
+                    <i class="fa-sharp fa-solid fa-arrows-rotate"></i>
+                </button>
+            </td>
+            </form>
+            <td>
+                <a th:href="@{/cart/delete/{id}(id=${cartItem.product.id})}">
+                    <i class="fa-regular fa-x"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="row my-5">
+    <div class="col-lg-8 col-sm-12"></div>
+    <div class="col-lg-4 col-sm-12">
+        <div class="order-box">
+            <h4>Order summary</h4>
+            <div class="d-flex">
+                <h5>Sub Total</h5>
+                <div class="ml-auto font-weight-bold" th:text = "${subTotal}"> </div>
+            </div>
+            <div class="d-flex">
+                <h5>Shipping Cost</h5>
+                <div class="ml-auto font-weight-bold"> Free</div>
+            </div>
+            <hr>
+            <div class="d-flex gr-total">
+                <h5>Grand Total</h5>
+                <div class="ml-auto h5" th:text = "${subTotal} +'VND'"> </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="col-12 d-flex shopping-box"><a th:href="@{/order/check-out}" class="ml-auto btn hvr-hover btn btn-info ">Checkout</a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <a th:href="@{/shopping/index}" class="btn btn-success">Product</a>
+<!--    <a th:href="@{/order/check-out}" class="btn btn-info">Check out</a>-->
+</div>
+
+</body>
+</html>
