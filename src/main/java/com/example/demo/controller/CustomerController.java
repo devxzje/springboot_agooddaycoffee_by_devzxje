@@ -39,7 +39,7 @@ public class CustomerController {
     public String delete(RedirectAttributes redirectAttributes,
                          @PathVariable("id") Integer id) {
         customerRepository.deleteById(id);
-        redirectAttributes.addFlashAttribute("message","The customer has been deleted successfully.");
+        redirectAttributes.addFlashAttribute("message", "The customer has been deleted successfully.");
         return "redirect:/customer/index";
     }
 
@@ -64,11 +64,10 @@ public class CustomerController {
                          RedirectAttributes redirectAttributes
     ) {
 
-            Optional<Customer> customer = customerRepository.findById(id);
-            model.addAttribute("customer", customer);
-            model.addAttribute("pageTitle", "Update customer");
-            return "customer/form";
-
+        Optional<Customer> customer = customerRepository.findById(id);
+        model.addAttribute("customer", customer);
+        model.addAttribute("pageTitle", "Update customer");
+        return "customer/form";
 
 
     }

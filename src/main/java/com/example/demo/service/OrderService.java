@@ -8,7 +8,7 @@ public interface OrderService {
 
     public void save(ShoppingCart shoppingCart);
 
-    Order acceptOrder(Integer id) ;
+    Order acceptOrder(Integer id);
 
     void cancelOrder(Integer id);
 

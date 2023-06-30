@@ -97,19 +97,17 @@ public class OrderController {
 
     @GetMapping("/management")
     public String management(Model model,
-                       RedirectAttributes redirectAttributes) throws NotFoundException {
-//        Customer customer = customerService.findById(1);
-//        List<Order> orders = customer.getOrders();
-        List<Order> orders= orderRepository.findAll();
+                             RedirectAttributes redirectAttributes) throws NotFoundException {
+        List<Order> orders = orderRepository.findAll();
         model.addAttribute("orders", orders);
         return "order/management";
     }
 
     @GetMapping("/confirm/{id}")
     public String confirm(Model model,
-                         RedirectAttributes redirectAttributes,
-                         @PathVariable("id") Integer id) throws NotFoundException {
-      Order order= orderService.findById(id);
+                          RedirectAttributes redirectAttributes,
+                          @PathVariable("id") Integer id) throws NotFoundException {
+        Order order = orderService.findById(id);
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         order.setDeliveryDate(sqlDate);

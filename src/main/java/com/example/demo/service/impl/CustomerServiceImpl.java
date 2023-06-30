@@ -14,9 +14,10 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepository customerRepository;
+
     @Override
     public List<Customer> filter(String keyword) {
-        if(keyword != null){
+        if (keyword != null) {
             return customerRepository.filter(keyword);
         }
         return customerRepository.findAll();
@@ -25,9 +26,9 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer findById(Integer id) throws NotFoundException {
         Optional<Customer> customer = customerRepository.findById(id);
-        if(customer.isPresent()){
+        if (customer.isPresent()) {
             return customer.get();
         }
-        throw new NotFoundException("Can not found customer with id:"+id);
+        throw new NotFoundException("Can not found customer with id:" + id);
     }
 }

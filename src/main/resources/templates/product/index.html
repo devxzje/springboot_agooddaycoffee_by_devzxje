@@ -24,7 +24,7 @@
 
 <div>
     <form th:action="@{/product/index}">
-        Filter: <input type="text" name="keyword"  th:value="${keyword}" required size="50">
+        Filter: <input type="text" name="keyword" th:value="${keyword}" required size="50">
         <input type="submit" value="Search" class="btn btn-outline-dark">
         <a th:href="@{/product/index}" class="btn btn-outline-dark">
             Clear

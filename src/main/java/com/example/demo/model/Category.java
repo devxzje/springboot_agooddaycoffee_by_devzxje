@@ -21,4 +21,5 @@ public class Category {
 
     @Column(name = "category_status")
     private Integer status;
+
 }

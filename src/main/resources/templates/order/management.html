@@ -14,25 +14,7 @@
     <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
 
-        li {
-            float: left;
-        }
-
-        li a {
-            display: block;
-            padding: 8px;
-            background-color: #dddddd;
-            text-decoration: none;
-        }
-    </style>
 </head>
 <body>
 
@@ -40,35 +22,6 @@
     [[${message}]]
 </div>
 
-<!--<nav class="menutop">-->
-<!--    <ul>-->
-<!--        <li><a th:href="@{/}">Trang chu</a></li>-->
-<!--        <li><a th:href="@{/ctsp/index}">San pham chi tiet</a></li>-->
-<!--        <li><a th:href="@{/khach-hang/index}">Khach hang</a></li>-->
-<!--        <li><a th:href="@{/nhan-vien/index}">Nhan vien</a></li>-->
-<!--        <li><a th:href="@{/chuc-vu/index}">Chuc vu </a></li>-->
-<!--        <li><a th:href="@{/gio-hang/index}">Gio hang</a></li>-->
-<!--        <li><a th:href="@{/san-pham/index}">San pham</a></li>-->
-<!--        <li><a th:href="@{/mau-sac/index}">Mau sac</a></li>-->
-<!--        <li><a th:href="@{/dong-sp/index}">Dong sp</a></li>-->
-<!--        <li><a th:href="@{/cua-hang/index}">Cua hang</a></li>-->
-<!--        <li><a th:href="@{/nsx/index}">NSX</a></li>-->
-<!--        <li><a th:href="@{/cart/view}">-->
-<!--            <i class="fa-solid fa-cart-arrow-up fa-2xl"></i>-->
-<!--        </a></li>-->
-<!--    </ul>-->
-<!--</nav>-->
-
-
-<!--<div>-->
-<!--    <form th:action="@{/cart/index}">-->
-<!--        Filter: <input type="text" name="keyword"  th:value="${keyword}" required size="50">-->
-<!--        <input type="submit" value="Search" class="btn btn-outline-dark">-->
-<!--        <a th:href="@{/cart/index}" class="btn btn-outline-dark">-->
-<!--            Clear-->
-<!--        </a>-->
-<!--    </form>-->
-<!--</div>-->
 
 <table class="table table-bordered">
     <thead class="thead-dark">
@@ -88,10 +41,11 @@
             <input type="hidden" name="id" th:value="${order.id}">
             <td th:text="${order.customer.firstName}"></td>
             <td th:text="${order.orderDate}"></td>
-        <td th:text="${order.totalPrice}"></td>
+            <td th:text="${order.totalPrice}"></td>
             <td th:text="${order.orderStatus}==0 ?'Waiting':'Confirmed'"></td>
             <td>
-                <a th:if="${order.orderStatus==0}" th:attr="disabled=${true}" th:href="@{/order/confirm/{id}(id=${order.id})}" class="btn btn-success"> Confirm
+                <a th:if="${order.orderStatus==0}" th:attr="disabled=${true}"
+                   th:href="@{/order/confirm/{id}(id=${order.id})}" class="btn btn-success"> Confirm
                 </a>
             </td>
         </form>

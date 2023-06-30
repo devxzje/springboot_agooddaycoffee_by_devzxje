@@ -56,7 +56,7 @@ public class OrderServiceImpl implements OrderService {
         }
         order.setOrderDetailList(orderDetailList);
         cartRepository.deleteById(shoppingCart.getId());
-         orderRepository.save(order);
+        orderRepository.save(order);
     }
 
     @Override
@@ -76,9 +76,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order findById(Integer id) throws NotFoundException {
         Optional<Order> order = orderRepository.findById(id);
-        if(order.isPresent()){
+        if (order.isPresent()) {
             return order.get();
         }
-        throw new NotFoundException("Can not found product with id:"+id);
+        throw new NotFoundException("Can not found product with id:" + id);
     }
 }

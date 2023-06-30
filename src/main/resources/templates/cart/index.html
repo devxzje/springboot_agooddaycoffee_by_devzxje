@@ -25,40 +25,40 @@
 
 <table class="table table-striped">
     <thead class="thead-dark">
-        <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
-            <th>Update</th>
-            <th>Remove</th>
-        </tr>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+        <th>Update</th>
+        <th>Remove</th>
+    </tr>
     </thead>
     <tbody>
-        <tr th:each="cartItem:${cartItems}">
-            <td th:text="${cartItem.product.name}"></td>
-            <td th:text="${cartItem.product.price}"></td>
-            <form th:action="@{/cart/update}" method="post">
-                <input type="hidden" name="id" th:value="${cartItem.product.id}">
+    <tr th:each="cartItem:${cartItems}">
+        <td th:text="${cartItem.product.name}"></td>
+        <td th:text="${cartItem.product.price}"></td>
+        <form th:action="@{/cart/update}" method="post">
+            <input type="hidden" name="id" th:value="${cartItem.product.id}">
 
             <td>
                 <input type="number" name="quantity" th:value="${cartItem.quantity}">
             </td>
-                <td th:text="${cartItem.totalPrice}">
-                </td>
+            <td th:text="${cartItem.totalPrice}">
+            </td>
 
             <td>
                 <button type="submit">
                     <i class="fa-sharp fa-solid fa-arrows-rotate"></i>
                 </button>
             </td>
-            </form>
-            <td>
-                <a th:href="@{/cart/delete/{id}(id=${cartItem.product.id})}">
-                    <i class="fa-regular fa-x"></i>
-                </a>
-            </td>
-        </tr>
+        </form>
+        <td>
+            <a th:href="@{/cart/delete/{id}(id=${cartItem.product.id})}">
+                <i class="fa-regular fa-x"></i>
+            </a>
+        </td>
+    </tr>
     </tbody>
 </table>
 
@@ -69,7 +69,7 @@
             <h4>Order summary</h4>
             <div class="d-flex">
                 <h5>Sub Total</h5>
-                <div class="ml-auto font-weight-bold" th:text = "${subTotal}"> </div>
+                <div class="ml-auto font-weight-bold" th:text="${subTotal}"></div>
             </div>
             <div class="d-flex">
                 <h5>Shipping Cost</h5>
@@ -78,12 +78,13 @@
             <hr>
             <div class="d-flex gr-total">
                 <h5>Grand Total</h5>
-                <div class="ml-auto h5" th:text = "${subTotal} +'VND'"> </div>
+                <div class="ml-auto h5" th:text="${subTotal} +'VND'"></div>
             </div>
             <hr>
         </div>
     </div>
-    <div class="col-12 d-flex shopping-box"><a th:href="@{/order/check-out}" class="ml-auto btn hvr-hover btn btn-info ">Checkout</a>
+    <div class="col-12 d-flex shopping-box"><a th:href="@{/order/check-out}"
+                                               class="ml-auto btn hvr-hover btn btn-info ">Checkout</a>
     </div>
 </div>
 

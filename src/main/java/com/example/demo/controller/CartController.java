@@ -64,12 +64,12 @@ public class CartController {
 
     @GetMapping("/view")
     public String view(Model model,
-                       RedirectAttributes redirectAttributes) throws NotFoundException{
+                       RedirectAttributes redirectAttributes) throws NotFoundException {
         Customer customer = customerService.findById(1);
-        ShoppingCart cart= customer.getShoppingCart();
-        if(cart==null){
+        ShoppingCart cart = customer.getShoppingCart();
+        if (cart == null) {
             model.addAttribute("message", "Nothing in your cart, go back to buy some coffee");
-        }else{
+        } else {
             Set<CartItem> cartItems = cart.getCartItem();
             model.addAttribute("cartItems", cartItems);
             Double totalPrice = cart.getTotalPrice();

@@ -53,7 +53,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 itemRepository.save(cartItem);
             } else {
                 cartItem.setQuantity(cartItem.getQuantity() + quantity);
-                cartItem.setTotalPrice(cartItem.getTotalPrice() + ( quantity * product.getPrice()));
+                cartItem.setTotalPrice(cartItem.getTotalPrice() + (quantity * product.getPrice()));
                 itemRepository.save(cartItem);
             }
         }
@@ -129,18 +129,18 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cartItem;
     }
 
-    private int totalItems(Set<CartItem> cartItems){
+    private int totalItems(Set<CartItem> cartItems) {
         int totalItems = 0;
-        for(CartItem item : cartItems){
+        for (CartItem item : cartItems) {
             totalItems += item.getQuantity();
         }
         return totalItems;
     }
 
-    private double totalPrice(Set<CartItem> cartItems){
+    private double totalPrice(Set<CartItem> cartItems) {
         double totalPrice = 0.0;
 
-        for(CartItem item : cartItems){
+        for (CartItem item : cartItems) {
             totalPrice += item.getTotalPrice();
         }
 
