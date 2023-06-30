@@ -15,8 +15,114 @@
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        /* Color of the links BEFORE scroll */
+        .navbar-scroll .nav-link,
+        .navbar-scroll .navbar-toggler-icon,
+        .navbar-scroll .navbar-brand {
+            color: #262626;
+        }
+
+        /* Color of the navbar BEFORE scroll */
+        .navbar-scroll {
+            background-color: #FFC017;
+        }
+
+        /* Color of the links AFTER scroll */
+        .navbar-scrolled .nav-link,
+        .navbar-scrolled .navbar-toggler-icon,
+        .navbar-scroll .navbar-brand {
+            color: #262626;
+        }
+
+        /* Color of the navbar AFTER scroll */
+        .navbar-scrolled {
+            background-color: #fff;
+        }
+
+        /* An optional height of the navbar AFTER scroll */
+        .navbar.navbar-scroll.navbar-scrolled {
+            padding-top: auto;
+            padding-bottom: auto;
+        }
+
+        .navbar-brand {
+            font-size: unset;
+            height: 3.5rem;
+        }
+    </style>
+
 </head>
 <body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <!-- Container wrapper -->
+    <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">
+            <i class="fa-solid fa-7 fa-xl"></i>
+        </a>
+        <!-- Search form -->
+        <form class="input-group" style="width: 400px" th:action="@{/shopping/index}">
+            <input type="text" class="form-control" name="keyword" th:value="${keyword}" required placeholder="Type query" aria-label="Search"/>
+            <button class="btn btn-outline-primary" type="submit" data-mdb-ripple-color="dark"
+                    style="padding: .45rem 1.5rem .35rem;">
+                Search
+            </button>
+            <a th:href="@{/shopping/index}" class="btn btn-outline-dark">
+                Clear
+            </a>
+        </form>
+
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left links -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active d-flex flex-column text-center" aria-current="page" th:href="@{/shopping/index}"><i
+                            class="fas fa-home fa-lg"></i><span class="small">Home</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex flex-column text-center" aria-current="page" th:href="@{/product/index}"><i
+                            class="fas fa-user-friends fa-lg"></i><span class="small">Product</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex flex-column text-center" aria-current="page" th:href="@{/category/index}"><i
+                            class="fas fa-briefcase fa-lg"></i><span class="small">Category</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex flex-column text-center" aria-current="page" th:href="@{/customer/index}"><i
+                            class="fas fa-comment-dots fa-lg"></i><span class="small">Customer</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex flex-column text-center" aria-current="page" th:href="@{/cart/view}"><i
+                            class="fas fa-bell fa-lg"></i><span class="small">Cart</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex flex-column text-center" aria-current="page" th:href="@{/order/view}"><i
+                            class="fas fa-bell fa-lg"></i><span class="small">Order</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex flex-column text-center" aria-current="page" th:href="@{/order/management}"><i
+                            class="fas fa-bell fa-lg"></i><span class="small">Order management</span></a>
+                </li>
+            </ul>
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<br> <br> <br>
 
 
 <div class="alert alert-success text-center" th:if="${message}">
