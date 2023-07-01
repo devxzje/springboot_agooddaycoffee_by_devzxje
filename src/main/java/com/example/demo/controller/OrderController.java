@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.exception.NotFoundException;
-import com.example.demo.model.CartItem;
-import com.example.demo.model.Customer;
-import com.example.demo.model.Order;
-import com.example.demo.model.ShoppingCart;
+import com.example.demo.model.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.CustomerService;
 import com.example.demo.service.OrderService;
@@ -67,6 +64,27 @@ public class OrderController {
         return "order/form";
     }
 
+    @GetMapping("/detail/{id}")
+    public String detail(Model model,
+                         RedirectAttributes redirectAttributes,
+                         @PathVariable("id") Integer id) throws NotFoundException {
+        Order order = orderService.findById(id);
+        List<OrderDetail> orderDetails = order.getOrderDetailList();
+        Customer customer = order.getCustomer();
+        Double totalPrice = order.getTotalPrice();
+        for (OrderDetail orderDetail: orderDetails
+             ) {
+            if(orderDetail.getOrder().getId().equals(id)){
+                Integer totalItems = orderDetail.getQuantity();
+                model.addAttribute("totalItems", totalItems);
+            }
+        }
+        model.addAttribute("orderDetails", orderDetails);
+        model.addAttribute("subTotal", totalPrice);
+        model.addAttribute("customer", customer);
+        return "order/detail";
+    }
+
     @PostMapping("/save")
     public String save1(Model model) throws NotFoundException {
         Customer customer = customerService.findById(1);
@@ -92,7 +110,6 @@ public class OrderController {
                          @PathVariable("id") Integer id) throws NotFoundException {
         orderRepository.deleteById(id);
         return "redirect:/order/view";
-
     }
 
     @GetMapping("/management")

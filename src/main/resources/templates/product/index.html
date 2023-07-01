@@ -65,13 +65,13 @@
             <i class="fa-solid fa-7 fa-xl"></i>
         </a>
         <!-- Search form -->
-        <form class="input-group" style="width: 400px" th:action="@{/shopping/index}">
+        <form class="input-group" style="width: 400px" th:action="@{/product/index}">
             <input type="text" class="form-control" name="keyword" th:value="${keyword}" required placeholder="Type query" aria-label="Search"/>
             <button class="btn btn-outline-primary" type="submit" data-mdb-ripple-color="dark"
                     style="padding: .45rem 1.5rem .35rem;">
                 Search
             </button>
-            <a th:href="@{/shopping/index}" class="btn btn-outline-dark">
+            <a th:href="@{/product/index}" class="btn btn-outline-dark">
                 Clear
             </a>
         </form>
@@ -128,15 +128,15 @@
     [[${message}]]
 </div>
 
-<div>
-    <form th:action="@{/product/index}">
-        Filter: <input type="text" name="keyword" th:value="${keyword}" required size="50">
-        <input type="submit" value="Search" class="btn btn-outline-dark">
-        <a th:href="@{/product/index}" class="btn btn-outline-dark">
-            Clear
-        </a>
-    </form>
-</div>
+<!--<div>-->
+<!--    <form th:action="@{/product/index}">-->
+<!--        Filter: <input type="text" name="keyword" th:value="${keyword}" required size="50">-->
+<!--        <input type="submit" value="Search" class="btn btn-outline-dark">-->
+<!--        <a th:href="@{/product/index}" class="btn btn-outline-dark">-->
+<!--            Clear-->
+<!--        </a>-->
+<!--    </form>-->
+<!--</div>-->
 
 <table class="table table-striped">
     <thead class="thead-dark">

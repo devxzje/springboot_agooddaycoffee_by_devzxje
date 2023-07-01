@@ -136,6 +136,7 @@
         <th>Total price</th>
         <th>Order status</th>
         <th>Cancel</th>
+        <th>Detail</th>
     </tr>
     </thead>
     <tbody>
@@ -156,6 +157,11 @@
             <td>
                 <a th:if="${order.orderStatus==0}" th:attr="disabled=${true}"
                    th:href="@{/order/delete/{id}(id=${order.id})}" class="btn btn-danger"> Cancel
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/order/detail/{id}(id=${order.id})}" class="btn btn-info">
+                    Detail
                 </a>
             </td>
         </form>
